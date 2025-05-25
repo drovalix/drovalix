@@ -1,0 +1,120 @@
+[
+  {
+    "symbol": "INFY.NS",
+    "score": 58,
+    "max_score": 110,
+    "rating": "Average",
+    "reasons": [
+      "Outstanding ROE of 0.29 (>20%)",
+      "High Debt/Equity ratio of 6.00 (\u22652)",
+      "Good profit margin of 16.38% (>10%)",
+      "Strong operating margin of 20.97% (>20%)",
+      "Positive revenue growth of 3.60%",
+      "Minimal EPS growth of -15.20% (\u22645%)",
+      "Free Cash Flow data not available",
+      "Attractive dividend yield of 403.00% (>3%)",
+      "Reasonable P/E ratio of 24.04 (<25)",
+      "High P/B ratio of 567.78 (\u22654)",
+      "Analyst consensus: Buy",
+      "Very large market cap: $6485.4B"
+    ],
+    "metrics": [
+      {
+        "metric": "Return on Equity",
+        "score": 20,
+        "max": 20,
+        "explanation": [
+          "Outstanding ROE of 0.29 (>20%)"
+        ]
+      },
+      {
+        "metric": "Debt to Equity",
+        "score": 0,
+        "max": 15,
+        "explanation": [
+          "High Debt/Equity ratio of 6.00 (\u22652)"
+        ]
+      },
+      {
+        "metric": "Profit Margin",
+        "score": 8,
+        "max": 12,
+        "explanation": [
+          "Good profit margin of 16.38% (>10%)"
+        ]
+      },
+      {
+        "metric": "Operating Margin",
+        "score": 10,
+        "max": 10,
+        "explanation": [
+          "Strong operating margin of 20.97% (>20%)"
+        ]
+      },
+      {
+        "metric": "Revenue Growth",
+        "score": 4,
+        "max": 10,
+        "explanation": [
+          "Positive revenue growth of 3.60%"
+        ]
+      },
+      {
+        "metric": "EPS Growth",
+        "score": 0,
+        "max": 8,
+        "explanation": [
+          "Minimal EPS growth of -15.20% (\u22645%)"
+        ]
+      },
+      {
+        "metric": "Free Cash Flow",
+        "score": 0,
+        "max": 10,
+        "explanation": [
+          "Free Cash Flow data not available"
+        ]
+      },
+      {
+        "metric": "Dividend Yield",
+        "score": 5,
+        "max": 5,
+        "explanation": [
+          "Attractive dividend yield of 403.00% (>3%)"
+        ]
+      },
+      {
+        "metric": "P/E Ratio",
+        "score": 3,
+        "max": 5,
+        "explanation": [
+          "Reasonable P/E ratio of 24.04 (<25)"
+        ]
+      },
+      {
+        "metric": "P/B Ratio",
+        "score": 0,
+        "max": 5,
+        "explanation": [
+          "High P/B ratio of 567.78 (\u22654)"
+        ]
+      },
+      {
+        "metric": "Analyst Recommendation",
+        "score": 3,
+        "max": 5,
+        "explanation": [
+          "Analyst consensus: Buy"
+        ]
+      },
+      {
+        "metric": "Market Capitalization",
+        "score": 5,
+        "max": 5,
+        "explanation": [
+          "Very large market cap: $6485.4B"
+        ]
+      }
+    ]
+  }
+]

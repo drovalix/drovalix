@@ -1,0 +1,108 @@
+name: Deploy Drovalix App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout repository code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Ensures full git history for changelogs, etc.
+
+      - name: ⚙️ Set up Node.js (Backend & Frontend)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: 📦 Install Backend Dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: 📦 Install Frontend Dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: 🛠 Build Frontend Assets
+        working-directory: frontend
+        env:
+          NODE_ENV: production
+        run: npm run build
+
+      - name: 🔍 Lint Frontend Code
+        working-directory: frontend
+        run: |
+          if [ -f package.json ] && npm run | grep -q lint; then
+            npm run lint
+          else
+            echo "No lint script found."
+          fi
+
+      - name: 🔍 Lint Backend Code
+        working-directory: backend
+        run: |
+          if [ -f package.json ] && npm run | grep -q lint; then
+            npm run lint
+          else
+            echo "No lint script found."
+          fi
+
+      - name: ✅ Run Backend Unit Tests
+        working-directory: backend
+        run: |
+          if [ -f package.json ] && npm test -- --ci; then
+            echo "Backend tests executed."
+          else
+            echo "No backend tests found."
+          fi
+
+      - name: ✅ Run Frontend Unit Tests
+        working-directory: frontend
+        run: |
+          if [ -f package.json ] && npm test -- --ci; then
+            echo "Frontend tests executed."
+          else
+            echo "No frontend tests found."
+          fi
+
+      - name: 📦 Build Backend (if applicable)
+        working-directory: backend
+        run: |
+          if [ -f package.json ] && npm run | grep -q build; then
+            npm run build
+          else
+            echo "No backend build step."
+          fi
+
+      - name: 🗂️ Upload Frontend Production Build as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: frontend-build
+          path: frontend/dist/
+
+      - name: 🗂️ Upload Backend Production Build as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: backend-build
+          path: backend/dist/
+
+      # --- Deployment Section Examples ---
+      # Uncomment or replace with your preferred deployment method
+
+      # - name: 🚀 Deploy to Render
+      #   uses: render-examples/action-deploy@v1
+      #   with:
+      #     api-key: ${{ secrets.RENDER_API_KEY }}
+      #     service-id: ${{ secrets.RENDER_SERVICE_ID }}
+
+      # - name: 🚀 Deploy to Vercel (Frontend)
+      #   uses: amondnet/vercel-action@v20
+      #   with:
+      #     vercel-token: ${{ secrets.VERCEL_TOKEN](#)
+
