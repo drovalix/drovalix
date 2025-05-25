@@ -13,7 +13,7 @@ jobs:
       - name: ⬇️ Checkout repository code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Ensures full git history for changelogs, etc.
+          fetch-depth: 0 # Ensures full git history
 
       - name: ⚙️ Set up Node.js (Backend & Frontend)
         uses: actions/setup-node@v3
@@ -41,7 +41,7 @@ jobs:
           if [ -f package.json ] && npm run | grep -q lint; then
             npm run lint
           else
-            echo "No lint script found."
+            echo "No frontend lint script found."
           fi
 
       - name: 🔍 Lint Backend Code
@@ -50,7 +50,7 @@ jobs:
           if [ -f package.json ] && npm run | grep -q lint; then
             npm run lint
           else
-            echo "No lint script found."
+            echo "No backend lint script found."
           fi
 
       - name: ✅ Run Backend Unit Tests
@@ -92,10 +92,9 @@ jobs:
           name: backend-build
           path: backend/dist/
 
-      # --- Deployment Section Examples ---
-      # Uncomment or replace with your preferred deployment method
+      # --- Optional Deployment Section ---
 
-      # - name: 🚀 Deploy to Render
+      # - name: 🚀 Deploy to Render (Backend)
       #   uses: render-examples/action-deploy@v1
       #   with:
       #     api-key: ${{ secrets.RENDER_API_KEY }}
@@ -104,5 +103,4 @@ jobs:
       # - name: 🚀 Deploy to Vercel (Frontend)
       #   uses: amondnet/vercel-action@v20
       #   with:
-      #     vercel-token: ${{ secrets.VERCEL_TOKEN](#)
-
+      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
